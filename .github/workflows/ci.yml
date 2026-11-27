@@ -1,6 +1,12 @@
 name: CI
 on:
   workflow_dispatch:
+  # Upstream's default branch is master; this fork's is main. Without this the
+  # build never runs on a push, only when started by hand.
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_call:
     inputs:
       release:
